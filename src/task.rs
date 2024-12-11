@@ -3,12 +3,6 @@ use std::fs::{File};
 use std::io::{Read, Write, Seek, SeekFrom};
 use std::time::{SystemTime, UNIX_EPOCH};
 
-macro_rules! var_name_and_value {
-    ($name:ident) => {
-        (stringify!($name), $name)
-    };
-}
-
 #[derive(Debug)]
 pub struct Task {
     id: u64,
