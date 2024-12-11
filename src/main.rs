@@ -152,7 +152,12 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 Err(why) => panic!("couldn't open {:?}: {}", file_name, why),
             }
         }
-
+        Commands::DeleteFile { file_name } => {
+            match remove_file(&file_name) {
+                Ok(_) => print!("File {:?} deleted successfully", file_name),
+                Err(why) => panic!("couldn't delete {:?}: {}", file_name, why),
+            }
+        }
        
     }
 

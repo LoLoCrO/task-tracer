@@ -17,11 +17,11 @@ pub enum Commands {
         file_name: PathBuf,
         content: String,
     },
-    Delete {
+    UpdateStatus {
         file_name: PathBuf,
         content: String,
     },
-    UpdateStatus {
+    Delete {
         file_name: PathBuf,
         content: String,
     },
@@ -29,6 +29,9 @@ pub enum Commands {
         file_name: PathBuf,
     },
     ReadFile {
+        file_name: PathBuf,
+    },
+    DeleteFile {
         file_name: PathBuf,
     },
 }
@@ -53,14 +56,14 @@ pub fn match_command(command: &str, file_name: PathBuf, content: String) -> Cli 
                 content,
             },
         },
-        "delete" => Cli {
-            command: Commands::Delete {
+        "update-status" => Cli {
+            command: Commands::UpdateStatus {
                 file_name,
                 content,
             },
         },
-        "update-status" => Cli {
-            command: Commands::UpdateStatus {
+        "delete" => Cli {
+            command: Commands::Delete {
                 file_name,
                 content,
             },
@@ -72,6 +75,11 @@ pub fn match_command(command: &str, file_name: PathBuf, content: String) -> Cli 
         },
         "read-file" => Cli {
             command: Commands::ReadFile {
+                file_name,
+            },
+        },
+        "delete-file" => Cli {
+            command: Commands::DeleteFile {
                 file_name,
             },
         },
